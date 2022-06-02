@@ -10,6 +10,8 @@ double difftime(time_t last_time, time_t start_time) : 입력 받은 두 시간�
 #include <ncurses.h>
 #include <ctime>  //time(NULL)
 #include <cstdlib>  //rand(), srand()
+#define game_row 40
+#define game_col 80
 
 
 // 아래 함수 구현 내용은 "랜덤 좌표 생성.cpp" 를 참고
