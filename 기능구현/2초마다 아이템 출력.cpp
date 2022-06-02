@@ -42,11 +42,15 @@ void random_item(WINDOW *temp_win){
 
 int main() {
   srand((unsigned)time(NULL)); //난수 발생기
-  time_t update_time = time(NULL); //update_time은 아이템이 갱신된 그 시각을 기록 (while문 돌기 전 초기값으로 현재 시간을 담는다.)
+  
+  //while문 돌기 전 초기값으로 현재 시간을 담는다. (update_time은 아이템이 갱신된 그 시각을 기록)
+  time_t update_time = time(NULL);
+  
   
   while(TRUE){
     //while루프 돌때마다 curr_time 갱신. (curr_time은 현재시간을 담는 변수)
     time_t curr_time = time(NULL);
+    
     
     // (현재시간 - 아이템이 갱신되었던 시간 >= 2초) 라면 이전 출력 내용을 초기화하고, 다시 아이템을 찍어서 출력한다. 
     if(difftime(curr_time, update_time)>=2){
