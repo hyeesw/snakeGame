@@ -19,7 +19,7 @@ int get_random_col(){ return rand() % (game_col-2) + 1;}
 
 
 
-// 2초마다 랜덤 좌표에 아이템 출력하는 함수
+// 랜덤 좌표에 랜덤 개수의 아이템 출력하는 함수
 void random_item(WINDOW *temp_win){
   // plus item 개수 랜덤하게 받기 (0 ~ 2개)
   int num = rand() % 3;
@@ -42,15 +42,15 @@ void random_item(WINDOW *temp_win){
 
 int main() {
   srand((unsigned)time(NULL)); //난수 발생기
-  time_t start_time = time(NULL); //현재 시간 저장
+  time_t update_time = time(NULL); //update_time은 아이템이 갱신된 그 시각을 기록 (while문 돌기 전 초기값으로 현재 시간을 담는다.)
   
   while(TRUE){
-    //while루프 돌때마다 새로운 시간 측정.
-    time_t last_time = time(NULL);
+    //while루프 돌때마다 curr_time 갱신. (curr_time은 현재시간을 담는 변수)
+    time_t curr_time = time(NULL);
     
-    // 두 시간의 차이가 2초라면 이전 출력 내용을 초기화하고, 다시 아이템을 찍어서 출력한다. 
-    if(difftime(last_time, start_time)>=2){
-      //이전 출력 내용 초기화 (초기화 안 하면, 같은 화면에 아이템이 계속 찍힘. 즉 나중엔 찍힌 아이템이 40개..50개.. 됨)
+    // (현재시간 - 아이템이 갱신되었던 시간 >= 2초) 라면 이전 출력 내용을 초기화하고, 다시 아이템을 찍어서 출력한다. 
+    if(difftime(curr_time, update_time)>=2){
+      //이전 출력 내용 초기화  (초기화 안 하면, 같은 화면에 아이템이 계속 찍힘. 즉 나중엔 찍힌 아이템이 40개..50개.. 됨)
       wclear(temp_win); wborder(temp_win, '|', '|', '-', '-', '*', '*', '*', '*');
       
       //랜덤 좌표에 아이템 출력 (위에서 구현한 함수)
@@ -59,7 +59,7 @@ int main() {
       //결과를 윈도우에 출력
       wrefresh(temp_win);
       
-      //if문을 나가기 전, start_time 갱신
-      start_time = time(NULL);
+      //if문을 나가기 전, update_time 갱신
+      update_time = time(NULL);
     }
   }
