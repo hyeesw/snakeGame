@@ -1,7 +1,7 @@
 /*
 <ctime>의 함수 time(), difftime() 설명 ---
 time(NULL) : 현재 시간을 리턴함. (time_t 타입으로 리턴)
-double difftime(time_t last_time, time_t start_time) : 입력 받은 두 시간의 차이를 (초)단위로 출력함. (double 타입으로 리턴) 
+double difftime(time_t last_time, time_t start_time) : 입력 받은 두 시간의 차이를 (초)단위로 리턴함. (double 타입으로 리턴) 
 */
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
