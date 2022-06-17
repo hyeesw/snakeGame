@@ -165,7 +165,7 @@ public:
   void DelItem(int stage_num);
   bool GetItem(int f, int s);
   bool diffItem(int f, int s, int *gcnt, int *pcnt, int stage_num);
-  bool UnableItem(int stage_num, int p1, int p2); 
+  bool canCreate_Item(int stage_num, int p1, int p2); 
 
   //snake 죽었는지 함수
   bool CrushBody(int stage_num);
