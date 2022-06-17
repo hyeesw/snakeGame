@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "Stage.h"
 
@@ -36,7 +35,7 @@ void Stage::Start(int step){ //단계에 따른 구성을 위해 step 인자 전
 
  Snake s(10, 10, s1_h, s1_w); //10, 10 위치에 뱀 생성
  WINDOW *msg = newwin(15, 40, 15, 40); //메세지창을 위한 윈도우 생성
- int k;
+
  if(s.Game(s1, b, now))//stage clear
     {if(now == 3){//mission all clear
         stage_msg(msg, 2); //창띄우기
@@ -72,7 +71,7 @@ void Stage::stage_msg(WINDOW* clear, int condition){ //미션여부에 따른 �
         mvwprintw(clear, 7, 4, "   After 3 sec, Next stage starts!");
         wrefresh(clear);}
     else if(condition == 2){
-        mvwprintw(clear, 6, 4, "        ALL Clear Mission!");
+        mvwprintw(clear, 6, 4, "        ALL Mission Clear!");
         mvwprintw(clear, 7, 4, "       Congratulation!!!!!!");
         mvwprintw(clear, 8, 4, "    After 3 sec, The game ends!!");
         wrefresh(clear);}
