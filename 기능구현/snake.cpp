@@ -30,6 +30,7 @@ void Snake::SpawnItem(int stage_num){
 		while(!canCreate_Item(stage_num, item_pos[i][0], item_pos[i][1]));
 		//아이템이 생성된 시각 기록
 		item_pos[i][2] = time(0);
+		cnt++;
 	}
 	// 맵에 생성된 아이템 위치 기록
 	for(int i=0; i<item_totalNum; i++){
