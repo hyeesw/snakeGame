@@ -113,12 +113,12 @@ int Snake::DefineGate(int stage_num, int dirc, int gatey, int gatex){
 
 	//가장자리 벽에 생성된 gate가 아니라면, snake의 진행방향을 고려해서 그 방향대로 나와야한다.
 	//들어온 방향에 해당되는(up,down,right, left)가 벽이라면(0이 아니면) 시계방향으로 갈 수 있는 길을 탐색한다.
-	if(gate4dirc[dirc] == 0) { //그 방향으로 갈 수 있다면
+	if(gate4dirc[dirc] == '0') { //그 방향으로 갈 수 있다면
 		return dirc; //그 방향 리턴
 	}
 	else{ //갈 수 없다면, 시계방향으로 갈 수 있는 길을 탐색한다.
 		for(int i=1; i<=4; i++){
-			if(gate4dirc[i] == 0) { //그 방향으로 갈 수 있다면
+			if(gate4dirc[i] == '0') { //그 방향으로 갈 수 있다면
 				return i;
 			}
 		}
