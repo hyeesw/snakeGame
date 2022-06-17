@@ -26,8 +26,8 @@ void Snake::SpawnItem(int stage_num){
 			item_pos[i][1] = (rand()%(w)) + 1;
 			item_pos[i][3] = temp_type;
 		}
-		//혹시 생성할 수 없는 좌표인지 확인.
-		while(canCreate_Item(stage_num, item_pos[i][0], item_pos[i][1]));
+		//혹시 생성할 수 없는 좌표인지 확인. 생성할 수 없는 좌표는 pass.
+		while(!canCreate_Item(stage_num, item_pos[i][0], item_pos[i][1]));
 		//아이템이 생성된 시각 기록
 		item_pos[i][2] = time(0);
 	}
