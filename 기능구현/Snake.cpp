@@ -14,7 +14,7 @@ Snake::Snake(int y, int x, int height, int width):set_y(y), set_x(x), h(height),
 void Snake::SpawnItem(int stage_num){
 	srand((unsigned int)time(0)); //난수 발생기
 
-	itme_growth = rand()%(item_totalNum-1)+1; //growth item의 개수 랜덤으로 받기 (단, poision, growth 배분을 1개이상으로 설정)
+	item_growth = rand()%(item_totalNum-1)+1; //growth item의 개수 랜덤으로 받기 (단, poision, growth 배분을 1개이상으로 설정)
 	
 	//item의 위치 생성 item_pos = [[y좌표, x좌표, 생성된 시간, 아이템유형], ...]
 	// item_growth 만큼 growth item을 생성하고, 남은걸로 poision item 생성
@@ -106,10 +106,10 @@ int Snake::DefineGate(int stage_num, int dirc, int gatey, int gatex){
 	
 	//가장자리 벽에 위치한 gate라면 snake의 진행방향과 상관없이 반대방향으로 나오기.
 	//return 값으로 1:up, 2:down, 3:right, 4:left로 정했다.
-	if(up == '9'){return 2;} 
-	if(down == '9'){return 1;}
-	if(right == '9'){return 4;}
-	if(left == '9'){return 3;}
+	if(gate4dirc[1] == '9'){return 2;} 
+	if(gate4dirc[2] == '9'){return 1;}
+	if(gate4dirc[3] == '9'){return 4;}
+	if(gate4dirc[4] == '9'){return 3;}
 
 	//가장자리 벽에 생성된 gate가 아니라면, snake의 진행방향을 고려해서 그 방향대로 나와야한다.
 	//들어온 방향에 해당되는(up,down,right, left)가 벽이라면(0이 아니면) 시계방향으로 갈 수 있는 길을 탐색한다.
@@ -147,9 +147,9 @@ void Snake::SpawnGate(int stage_num, int h, int w){
 	
 	//랜덤한 좌표 생성
 	do{ r1 = rand()%h; c1 = rand()%w; }
-	while(map[stage_num] r1][c1] != '1');
+	while(map[stage_num][r1][c1] != '1');
 	do{ r2 = rand()%h; c2 = rand()%w; }
-	while((map[stage_num][r2][c2] != '1') || (r1 == r2) && (c1 == c2)));
+	while((map[stage_num][r2][c2] != '1') || (r1 == r2) && (c1 == c2));
 	
 	//gate에 좌표 담기.  gate = [[y, x, 생성된 시간] ...]
 	gate[0][0] = r1;
